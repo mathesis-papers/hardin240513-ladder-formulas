@@ -5,13 +5,15 @@
 We prove the three empirical formulas in OEIS A240513, revision 11, FORMULA entries 1–3, and extend Bala’s (2014) Chebyshev treatment of the related norm sequence by making the ladder connection explicit. These formulas are Hardin’s order-five recurrence, Barker’s generating function, and Mathar’s relation to A105309. The objects are binary two-column arrays in which no cell has exactly two equal-valued orthogonal neighbors, with the first cell fixed to zero. A transfer on sixteen ordered pairs of rows gives the recurrence and generating function. A norm identity proves the relation to A105309. The same construction proves the empirical width-three and width-four recurrences in A240514–A240515 and A240519; their minimal orders are 20 and 48. At every fixed width the generating function is rational. We also give correctly indexed Chebyshev identities and correct the sign and shift in A105309’s Chebyshev-transform formula.
 
 - PDF: [frozen public file](paper.pdf)
+- DOI: [https://doi.org/10.5281/zenodo.24409472](https://doi.org/10.5281/zenodo.24409472)
+- Concept DOI: [https://doi.org/10.5281/zenodo.24409471](https://doi.org/10.5281/zenodo.24409471)
 - License: CC-BY-4.0
 - Version: 3
 - Mathesis record: [hardin240513-ladder-formulas](https://mathesis-omega-research.apps.chrono-ai.fun/papers/hardin240513-ladder-formulas?version=3)
 
 ## How to cite
 
-Haobo Ma, Wenlin Zhang (2026). OEIS A240513, revision 11, FORMULA 1–3: ladder proofs and extensions of Bala (2014). Mathesis, version 3. https://mathesis-omega-research.apps.chrono-ai.fun/papers/hardin240513-ladder-formulas?version=3
+Haobo Ma, Wenlin Zhang (2026). OEIS A240513, revision 11, FORMULA 1–3: ladder proofs and extensions of Bala (2014). Mathesis, version 3. https://doi.org/10.5281/zenodo.24409472
 
 ## Statement progress
 
