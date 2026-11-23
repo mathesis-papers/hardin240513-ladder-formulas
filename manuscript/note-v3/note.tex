@@ -1,0 +1,517 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,longtable}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\Z}{\mathbb{Z}}
+\setlength{\emergencystretch}{2em}
+\title{OEIS A240513, revision 11, FORMULA 1--3:\\
+ladder proofs and extensions of Bala (2014)}
+\author{Haobo Ma\thanks{ChronoAI Pte Ltd, Singapore.}\and
+Wenlin Zhang\thanks{National University of Singapore; ChronoAI Pte Ltd, Singapore.}}
+\date{11 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove the three empirical formulas in OEIS A240513, revision 11,
+FORMULA entries 1--3, and extend Bala's (2014) Chebyshev treatment of
+the related norm sequence by making the ladder connection explicit
+\cite{ladder,bala}. These formulas are Hardin's order-five recurrence,
+Barker's generating function, and Mathar's relation to A105309.
+The objects are binary two-column arrays in which no cell
+has exactly two equal-valued orthogonal neighbors, with the first cell
+fixed to zero. A transfer on sixteen ordered pairs of rows gives the
+recurrence and generating function. A norm identity proves the relation
+to A105309. The same construction proves the empirical width-three
+and width-four recurrences in A240514--A240515 and A240519; their
+minimal orders are 20 and 48. At every fixed width the generating
+function is rational. We also give correctly indexed Chebyshev
+identities and correct the sign and shift in A105309's
+Chebyshev-transform formula.
+\end{abstract}
+
+\section{The array count}
+The question in A240513 is whether its empirical recurrence, generating
+function and quaternion relation hold for the stated binary arrays.
+Theorem~\ref{thm:main} and Corollary~\ref{cor:norm} prove all three.
+For $n\geq1$, let $a_n$ count maps
+$A:\{1,\ldots,n\}\times\{1,2\}\longrightarrow\{0,1\}$ with $A(1,1)=0$
+such that each cell has a number of equal-valued orthogonal neighbors
+different from two. Neighbors must lie inside the rectangle: there is no
+wrapping or diagonal adjacency. Rows and columns are labeled. In the
+binary alphabet, introducing values in row-major order, as in the NAME
+field of A240513, is equivalent to fixing the first cell to zero;
+the value one need not occur. Set $a_0=0$ as a series convention, rather
+than counting the empty rectangle. Write
+\[
+ Q(x)=1-x-2x^2-x^3+x^4,\qquad F(x)=\sum_{n\geq1}a_nx^n.
+\]
+
+\begin{theorem}\label{thm:main}
+For every $n\geq6$,
+\begin{equation}\label{eq:rec}
+ a_n=2a_{n-1}+a_{n-2}-a_{n-3}-2a_{n-4}+a_{n-5}.
+\end{equation}
+Moreover, as a formal power series in $\Z[[x]]$,
+\begin{equation}\label{eq:gf}
+ F(x)=\frac{x(2-x)(1-x^2-2x^3)}{(1-x)Q(x)}.
+\end{equation}
+The initial values are $a_1,\ldots,a_6=2,3,6,10,21,42$.
+\end{theorem}
+
+These are FORMULA entries 1 and 2 of A240513, revision 11
+(9 November 2018). The sequence was introduced by R.\ H.\ Hardin on
+6 April 2014; the generating function is attributed to Colin Barker,
+24 February 2018. The same recurrence appears in A240519, FORMULA,
+$k=2$ \cite{rectangle}. All divisions below are valid formally because
+the denominators have constant coefficient one.
+
+\section{A complete transfer proof}
+Let $\mathcal R=\{00,01,10,11\}$, with row coordinates indexed by $j=0,1$.
+Put $e(u,v)=\ind_{u=v}$ and define the boundary and interior predicates
+\begin{align*}
+ B(r,s)&\iff e(r_j,r_{1-j})+e(r_j,s_j)\ne2\quad(j=0,1),\\
+ I(r,s,t)&\iff e(s_j,s_{1-j})+e(s_j,r_j)+e(s_j,t_j)\ne2
+                 \quad(j=0,1).
+\end{align*}
+Thus $B(r,s)$ checks a boundary row $r$ adjacent to $s$, whereas
+$I(r,s,t)$ checks the middle row $s$. For a function
+$w:\mathcal R^2\to\Z$, define
+\[
+ (Tw)(r,s)=\sum_{t\in\mathcal R}\ind_{I(r,s,t)}w(s,t),\qquad
+ L(w)=\sum_{r,s\in\mathcal R}\ind_{r_0=0}\ind_{B(r,s)}w(r,s).
+\]
+Set $v_0(r,s)=\ind_{B(s,r)}$ and $v_{k+1}=Tv_k$.
+
+For fixed initial rows $r,s$, the number of choices of $k$ further rows
+that satisfy all interior conditions and the last boundary condition is
+$v_k(r,s)$. Indeed, for $k=0$ the only condition is $B(s,r)$.
+For $k+1$ further rows, choose the next row $t$, enforce $I(r,s,t)$,
+and count the remaining $k$ rows by the induction hypothesis.
+This gives exactly $Tv_k$. Enforcing the first boundary and first cell
+therefore proves, for every $k\geq0$,
+\begin{equation}\label{eq:bridge}
+ a_{k+2}=L(v_k).
+\end{equation}
+Each array has exactly one row sequence, so no symmetry quotient or
+multiplicity is introduced.
+
+The following table lists all coordinates needed for the argument.
+Each column after $v_0$ is obtained by the displayed definition of $T$.
+\begin{center}
+\small
+\begin{tabular}{ccrrrrrr}
+\toprule
+$r$&$s$&$v_0$&$v_1$&$v_2$&$v_3$&$v_4$&$v_5$\\
+\midrule
+00&00&0&0&0&0&0&0\\
+00&01&1&1&3&6&12&26\\
+00&10&1&1&3&6&12&26\\
+00&11&1&1&1&1&1&1\\
+01&00&0&1&1&3&6&12\\
+01&01&1&1&2&5&9&20\\
+01&10&1&2&5&9&20&41\\
+01&11&0&1&1&3&6&12\\
+10&00&0&1&1&3&6&12\\
+10&01&1&2&5&9&20&41\\
+10&10&1&1&2&5&9&20\\
+10&11&0&1&1&3&6&12\\
+11&00&1&1&1&1&1&1\\
+11&01&1&1&3&6&12&26\\
+11&10&1&1&3&6&12&26\\
+11&11&0&0&0&0&0&0\\
+\bottomrule
+\end{tabular}
+\end{center}
+Checking each of these sixteen rows gives the vector identity
+\begin{equation}\label{eq:certificate}
+ v_5=2v_4+v_3-v_2-2v_1+v_0.
+\end{equation}
+Apply $T^k$ and then $L$. Both maps are linear over $\Z$, so
+\eqref{eq:bridge} yields \eqref{eq:rec} for $n=k+7$, hence $n\geq7$.
+The two one-row arrays give $a_1=2$; the values
+$L(v_0),\ldots,L(v_4)$ are $3,6,10,21,42$.
+At $n=6$, the right side of \eqref{eq:rec} is
+$2\cdot21+10-6-2\cdot3+2=42$, establishing the remaining case.
+
+Finally,
+\[
+ (1-x)Q(x)=1-2x-x^2+x^3+2x^4-x^5.
+\]
+The coefficients of degrees zero through five in $(1-x)Q(x)F(x)$
+are $0,2,-1,-2,-3,2$, using $a_0=0$ and the initial values.
+All higher coefficients vanish by \eqref{eq:rec}. Thus
+\[
+ (1-x)Q(x)F(x)=2x-x^2-2x^3-3x^4+2x^5
+             =x(2-x)(1-x^2-2x^3),
+\]
+which proves \eqref{eq:gf} and Theorem~\ref{thm:main}.
+
+\section{The third empirical formula and adjacent entries}
+In A105309 \cite{norm}, let $q_0=q_1=1$ and
+$q_n=q_{n-1}+q_{n-2}J$, where
+$J=(0,1/\sqrt3,1/\sqrt3,1/\sqrt3)$ is a unit imaginary quaternion.
+Because $J^2=-1$, the real subalgebra spanned by $1,J$ is isomorphic
+to $\mathbb C$, preserving norms. Consequently A105309 is
+$c_n=|z_n|^2$, where
+\[
+ z_0=z_1=1,\qquad z_n=z_{n-1}+i z_{n-2}.
+\]
+
+\begin{corollary}\label{cor:norm}
+For every $n\geq1$, $a_n=1+c_n$. In particular, for $n\geq5$,
+\[
+ a_n=a_{n-1}+2a_{n-2}+a_{n-3}-a_{n-4}-2.
+\]
+\end{corollary}
+\begin{proof}
+For $n\geq1$, write $w_n=z_n\overline{z_{n-1}}=u_n+i t_n$.
+The defining recursion gives, for $n\geq2$,
+\[
+ w_n=c_{n-1}+i\overline{w_{n-1}},\quad
+ u_n=c_{n-1}+t_{n-1},\quad t_n=u_{n-1},\quad
+ c_n=c_{n-1}+c_{n-2}+2t_{n-1}.
+\]
+For $n\geq4$, these equalities imply
+\begin{align*}
+ c_n-c_{n-1}-c_{n-2}
+ &=2u_{n-2}=2c_{n-3}+2t_{n-3}\\
+ &=c_{n-2}+c_{n-3}-c_{n-4}.
+\end{align*}
+Together with $c_0,c_1,c_2,c_3=1,1,2,5$, coefficient comparison gives
+\[
+ C(x):=\sum_{n\geq0}c_nx^n=\frac{1-x^2}{Q(x)}.
+\]
+Direct substitution in \eqref{eq:gf} now yields
+\[
+ F(x)=\frac{x}{1-x}+C(x)-1.
+\]
+Comparing positive-degree coefficients proves the first assertion,
+which is Mathar's FORMULA entry of 9 November 2018 in A240513.
+Substituting $c_j=a_j-1$ in the order-four recurrence for $c_n$ proves
+the second assertion when $n-4\geq1$.
+\end{proof}
+
+The generating function for $c_n$ is also recorded in A105309,
+FORMULA (Mathar, 26 April 2024). A related earlier enumeration is
+Mathar's non-bonding domino count \cite[p.~8, Eq.~(12)]{mathar}:
+\[
+ \widehat D_2(x,1)=\frac{1+x+x^2-x^3}{Q(x)}
+                  =\frac{C(x)-1}{x}.
+\]
+This is the shifted sequence $c_{n+1}$, not the ladder sequence $a_n$.
+The argument above establishes the ladder relation directly, without
+requiring a domino-to-ladder bijection.
+
+The rational function $xC(x)$ already occurs in Chen and Shapiro's
+skinny-tree enumeration \cite[Theorem~16]{chen}, published in 2007.
+Bala \cite[Eqs.~(5)--(6), (19)--(22)]{bala} treats the same shifted
+sequence as a fourth-order divisibility sequence, with parameters
+$(P_1,P_2,Q)=(1,-4,1)$. These are antecedents for the norm sequence;
+the transfer proof identifies the binary-ladder count with it.
+
+\begin{corollary}\label{cor:rectangle}
+Let $T(n,k)$ be the rectangular-array count of A240519 with the same
+local rule and first-cell convention. Then, for $n,k\geq1$,
+\[
+ T(n,k)=T(k,n),\qquad T(n,2)=T(2,n)=a_n,\qquad
+ T(n,1)=T(1,n)=F_{n+1},
+\]
+where $F_1=F_2=1$ are Fibonacci numbers.
+\end{corollary}
+\begin{proof}
+Transposition preserves the first cell and all orthogonal adjacencies.
+The width-two assertion is the definition of $a_n$.
+For width one, only interior cells can have two neighbors, and the
+forbidden patterns are $000$ and $111$. Hence every constant run has
+length one or two. Since the initial symbol is fixed and successive
+runs alternate, admissible strings correspond bijectively to
+compositions of $n$ into parts one and two. Their number is $F_{n+1}$,
+by separating compositions according to their first part.
+\end{proof}
+
+The transfer description also extends to every fixed width $w\geq1$.
+Let $\mathcal R_w=\{0,1\}^w$ and let $h_j(r)$ be the number of
+in-row neighbors of position $j$ equal to $r_j$ (zero, one, or two).
+Replace $B$ and $I$ by
+\[
+ B_w(r,s)\iff h_j(r)+e(r_j,s_j)\ne2\quad\text{for every }j,
+\]
+\[
+ I_w(r,s,t)\iff h_j(s)+e(s_j,r_j)+e(s_j,t_j)\ne2
+                    \quad\text{for every }j.
+\]
+Define $T_w,L_w,b_w$ by the same formulas as $T,L,v_0$, using
+$\mathcal R_w,B_w,I_w$ and the first-coordinate constraint $r_0=0$.
+The continuation induction in \eqref{eq:bridge} is unchanged, proving
+$T(n,w)=L_w(T_w^{n-2}b_w)$ for $n\geq2$. Since $T_w$ is an integer
+matrix on $4^w$ states, summing its powers proves
+\[
+ \sum_{n\geq1}T(n,w)x^n
+ =F_{w+1}x+x^2 L_w\bigl((\mathrm{Id}-xT_w)^{-1}b_w\bigr).
+\]
+The inverse exists formally and has rational entries: its determinant
+has constant coefficient one. Thus the count has a rational generating
+function at every fixed width.
+
+\begin{corollary}\label{cor:orders}
+The columns $T(n,3)$ and $T(n,4)$ satisfy the empirical recurrences in
+A240514 and A240515 \cite{wider}, respectively, for $n\geq21$ and $n\geq49$.
+Their minimal eventual homogeneous recurrence orders over $\mathbb Q$
+are 20 and 48. Thus both empirical orders in A240519, FORMULA $k=3,4$,
+hold, with minimality as an additional conclusion.
+\end{corollary}
+\begin{proof}
+Write $d_3=20$, $d_4=48$ and
+$D_w(x)=\sum_{j=0}^{d_w}q_{w,j}x^j$.
+In increasing degree order the coefficients are
+\[
+\begin{split}
+(q_{3,j})={}&(1,-4,3,2,-2,-2,7,8,-15,-4,8,4,-15,-8,7,2,\\
+           &\hspace{7mm}-2,-2,3,4,1),
+\end{split}
+\]
+\[
+\begin{split}
+(q_{4,j})={}&(1,-5,5,-4,3,49,-10,-15,-45,-124,-131,-301,-18,\\
+ &615,201,1508,823,413,254,-2467,-793,-4516,-1071,-2289,0,\\
+ &2289,1071,4516,793,2467,-254,-413,-823,-1508,-201,-615,\\
+ &18,301,131,124,45,15,10,-49,-3,4,-5,5,-1).
+\end{split}
+\]
+These reproduce the coefficients of the two source recurrences after
+moving all terms to the left. Put $v_{w,k}=T_w^k b_w$.
+For $w=3,4$, the finite identities needed below are
+\[
+ \sum_{j=0}^{d_w}q_{w,j}v_{w,d_w-j}=0,
+ \qquad \det H_w\not\equiv0\pmod {1000000007},
+\]
+where $H_w=(T(i+j+2,w))_{0\leq i,j<d_w}$.
+The accompanying \texttt{verify.py} checks the vector identities using
+precisely $B_w,I_w$ above and checks the determinants in exact modular
+arithmetic. The state counts, determinant residues, coefficients and
+initial values are in \texttt{width-certificates.json} and
+\texttt{checks.json}. The identities do not depend on a fitted finite
+prefix.
+
+Applying $L_wT_w^k$ to the zero vector proves
+$\sum_{j=0}^{d_w}q_{w,j}T(n-j,w)=0$ for $n\geq d_w+2$.
+The remaining boundary case $n=d_w+1$ follows by substituting
+$T(1,3)=3$ or $T(1,4)=5$ and the first $d_w$ transfer totals; the
+same integer check gives zero. This proves both recurrences at their
+first possible indices.
+
+The nonzero modular determinants imply $\det H_w\ne0$ over
+$\mathbb Q$. To see why this also proves eventual minimality,
+let $g_k=T(k+2,w)$ and form the state
+$(g_k,\ldots,g_{k+d_w-1})^{\mathsf t}$. Its shift is the companion
+matrix of the recurrence, whose determinant is $\pm q_{w,d_w}=\pm1$.
+Consequently the Hankel matrix beginning at $g_s$ is the product of
+the $s$th power of this invertible companion matrix and $H_w$.
+Every shifted Hankel matrix is therefore nonsingular. An eventual
+recurrence of smaller order would make its sufficiently late $d_w$
+consecutive columns dependent, a contradiction.
+\end{proof}
+
+\section{Further norm identities and their indexing}
+Let $\alpha=(1+\sqrt{17})/4$, $\beta=(1-\sqrt{17})/4$,
+$M=\left(\begin{smallmatrix}0&1\\1&1/2\end{smallmatrix}\right)$ and
+$\gamma=(1+i)/\sqrt8$.
+Use the usual recurrences $T_0=1,T_1=t$,
+$T_{m+1}=2tT_m-T_{m-1}$ and $U_0=1,U_1=2t$,
+$U_{m+1}=2tU_m-U_{m-1}$.
+
+\begin{corollary}\label{cor:chebyshev}
+For every $n\geq0$,
+\[
+ c_n=\frac{T_{n+1}(\alpha)-T_{n+1}(\beta)}{\alpha-\beta}
+     =[T_{n+1}(M)]_{21}
+     =U_n(\gamma)U_n(\overline\gamma).
+\]
+If $\mathcal C A(x)=\frac{1-x^2}{1+x^2}
+A\bigl(\frac{x}{1+x^2}\bigr)$ denotes the Chebyshev transform,
+then
+\[
+ \mathcal C\!\left(\frac{t}{1-t-4t^2}\right)(x)=xC(x).
+\]
+Thus $a_n$ is one plus each of the first three expressions for $n\geq1$.
+\end{corollary}
+\begin{proof}
+The generating function of $T_{n+1}(t)$ is
+$(t-x)/(1-2tx+x^2)$. Subtract at $\alpha,\beta$ and divide
+by $\alpha-\beta$. Since $\alpha+\beta=1/2$ and
+$\alpha\beta=-1$, the result is $(1-x^2)/Q(x)=C(x)$.
+For every polynomial $p$, reduction modulo
+$M^2-M/2-\mathrm{Id}=0$ writes $p(M)=A\mathrm{Id}+BM$.
+Evaluation at the distinct roots $\alpha,\beta$ gives
+$B=(p(\alpha)-p(\beta))/(\alpha-\beta)$, which is its lower-left
+entry.
+Set $\eta=(1-i)/\sqrt2$. The sequence
+$\eta^nU_n(\gamma)$ has initial values 1,1 and recurrence
+$z_n=z_{n-1}+iz_{n-2}$, because $2\eta\gamma=1$ and
+$\eta^2=-i$. Its squared norm is $c_n$, proving the third expression.
+Finally the substitution in $\mathcal C$ gives denominator
+$(1+x^2)^2-x(1+x^2)-4x^2=Q(x)$ and numerator $x(1-x^2)$.
+\end{proof}
+
+The A105309 FORMULA block attributed to Bala (27 March 2014)
+prints $T_n$, $T_n(M)$ and $U_{n-1}$ in place of
+$T_{n+1}$, $T_{n+1}(M)$ and $U_n$. At $n=2$ all three
+printed expressions equal one instead of $c_2=2$.
+Its transform input has $+4t^2$ instead of $-4t^2$ and its output
+requires the shift $xC(x)$, rather than $C(x)$.
+These statements are refuted-and-corrected by
+Corollary~\ref{cor:chebyshev}. The correctly indexed first-kind formula
+already appears in Somos's Mathematica code in that entry
+(20 December 2016). Bala's bivariate formula itself uses the shifted
+sequence $W_{n+1}=c_n$ and is consistent with these corrections.
+The corrected transform input is $t$ times the generating function
+of A006131 \cite{auxiliary}.
+
+\begin{corollary}\label{cor:auxiliary}
+Let $r_n=\mathrm{A092886}(n)$, and let $p_n,s_n$ be A201837 and
+A201838. Then
+\[
+ c_n=r_{n+1}-r_{n-1}\quad(n\geq1),\qquad
+ c_n=p_n^2+s_n^2\quad(n\geq0).
+\]
+Extending $c_n$ by its order-four recurrence to all integers gives
+$c_n=c_{-n-2}$. For $m,k\geq1$ one has the divisibility
+$c_{m-1}\mid c_{mk-1}$; consequently
+$a_{m-1}-1\mid a_{mk-1}-1$ when $m\geq2$.
+\end{corollary}
+\begin{proof}
+The defining series for $r_n$ is $x/Q(x)$, so multiplication by
+$1-x^2$ proves the first identity. The defining series for
+$h_n=p_n+is_n$ is $(1-ix-ix^2)^{-1}$ \cite{auxiliary}.
+Its recurrence gives $h_n=i^n\overline{z_n}$, with matching
+initial values, and hence the second identity. Equivalently,
+with $r_\pm=(i\pm\sqrt{4i-1})/2$,
+\[
+ h_n=\frac{r_+^{n+1}-r_-^{n+1}}{r_+-r_-},
+\]
+proving also Suteu's A105309 closed form (20 December 2016).
+
+Put $u_0=0$, $u_m=h_{m-1}$ for $m\geq1$.
+The recurrence $u_{m+1}=iu_m+iu_{m-1}$ extends to $\mathbb Z$.
+Since $r_+r_-=-i$, its closed form gives
+$u_{-m}=-(-i)^{-m}u_m$ and $|u_{-m}|^2=|u_m|^2$.
+Thus $|u_{n+1}|^2$ has the stated reflection; it equals the
+unique two-sided extension of $c_n$, since the order-four recurrence
+has nonzero last coefficient and the norm calculation remains valid.
+For divisibility, the identity
+\[
+ \begin{pmatrix}i&i\\1&0\end{pmatrix}^{m}
+ =\begin{pmatrix}u_{m+1}&iu_m\\u_m&iu_{m-1}\end{pmatrix}
+ \equiv iu_{m-1}\mathrm{Id}\pmod {u_m}
+\]
+shows, on raising to the $k$th power, that $u_m\mid u_{mk}$ in
+$\mathbb Z[i]$. Taking norms proves the integer divisibility.
+The last assertion uses $c_j=a_j-1$ at positive indices.
+This rederives the shifted divisibility property in Bala's family
+\cite[Eq.~(5)]{bala} and transfers it to the ladder count.
+\end{proof}
+
+\section{Coverage and verification}
+\begin{longtable}{@{}p{0.43\linewidth}p{0.51\linewidth}@{}}
+\toprule
+Source item & Mathematical coverage\\
+\midrule
+A240513 rev.~11, FORMULA 1--2 & Proved by Theorem~\ref{thm:main}.\\
+A240513 rev.~11, FORMULA 3 & Proved by Corollary~\ref{cor:norm}.\\
+A105309, NAME and rational g.f. & Norm definition and generating function
+proved in Corollary~\ref{cor:norm}; related shifted enumerations:
+Chen--Shapiro (2007), Mathar (2024); prior proofs cited.\\
+A240519, FORMULA $k=1,2$ & Proved by Corollary~\ref{cor:rectangle}
+and Theorem~\ref{thm:main}.\\
+A240519 rev.~6, FORMULA $k=3,4$; A240514--A240515, FORMULA &
+Proved by Corollary~\ref{cor:orders}. Minimality: not posed; proved.\\
+A240519, arbitrary fixed width & Rational generating function from the
+$4^w$-state transfer; not posed as a formula, proved.\\
+A105309, Bala FORMULA block (2014), first-/second-kind and matrix formulas &
+Refuted-and-corrected in Corollary~\ref{cor:chebyshev}; corrected first-kind
+formula also listed by Somos (2016).\\
+A105309, Bala FORMULA block, transform & Refuted-and-corrected, with
+input $t/(1-t-4t^2)$ and output $xC(x)$.\\
+A105309, A092886 difference; Hanna's sum of squares (2011);
+Suteu's closed form and Somos's reflection (2016) &
+Proved by Corollary~\ref{cor:auxiliary}; matching auxiliary entries
+A092886, A201837--A201838.\\
+Bala (2014), divisibility family & Reproved; prior proof Bala (2014).
+Ladder consequence in Corollary~\ref{cor:auxiliary}: not posed; proved.\\
+Mathar (2024), unrelated larger-width domino and density statements &
+Not covered; their objects differ from the binary-array model.\\
+\bottomrule
+\end{longtable}
+
+\medskip
+The pinned Lean file
+\href{https://github.com/the-omega-institute/trureturing/blob/70badecc7fca07aa0b70e1202720702f7d1f9670/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA240513Ladder.lean}{\texttt{HardinA240513Ladder.lean}}
+\cite{lean} defines the literal array count
+\texttt{a}. Its declaration \texttt{result} states both the recurrence
+for $n\geq6$ and the
+polynomial-multiplied identity \eqref{eq:gf} over $\Z[[x]]$;
+\texttt{finite\_certificate} states \eqref{eq:certificate} on all sixteen
+row-pair states. Corollaries~\ref{cor:norm}, \ref{cor:rectangle},
+\ref{cor:chebyshev} and~\ref{cor:auxiliary}, and fixed-width rationality,
+are written proofs. Corollary~\ref{cor:orders} combines the written
+transfer and Hankel arguments with exhaustive finite integer and modular
+checks. These additional results are outside the
+scope of the pinned Lean declaration.
+The accompanying \texttt{verify.py} checks the continuation-vector
+identity, the wider-state annihilators and nonzero Hankel determinants.
+It also compares literal arrays, recurrence coefficients, quaternion
+norms and the related norm identities on the finite ranges specified
+in \texttt{checks.json}; published OEIS tables provide optional further
+comparisons. The exhaustive annihilator checks have the all-height
+consequence proved in Corollary~\ref{cor:orders}; the prefix comparisons
+are bounded corroboration. Full reproduction commands and finite ranges
+are in the accompanying \texttt{README.md}.
+
+\begin{thebibliography}{13}
+\bibitem{ladder} R. H. Hardin, with formulas by Colin Barker and
+R. J. Mathar, \emph{A240513}, The On-Line Encyclopedia of Integer Sequences,
+revision 11, 9 November 2018. NAME, OFFSET, and FORMULA entries 1--3.
+\url{https://oeis.org/A240513}.
+\bibitem{norm} Gerald McGarvey and contributors, \emph{A105309},
+The On-Line Encyclopedia of Integer Sequences, revision 70,
+30 May 2026. NAME; FORMULA, generating function attributed to
+R. J. Mathar, 26 April 2024. \url{https://oeis.org/A105309}.
+\bibitem{rectangle} R. H. Hardin, \emph{A240519},
+The On-Line Encyclopedia of Integer Sequences, revision 6,
+23 July 2025. NAME and FORMULA, $k=1,2,3,4$.
+\url{https://oeis.org/A240519}.
+\bibitem{wider} R. H. Hardin, \emph{A240514} and \emph{A240515},
+The On-Line Encyclopedia of Integer Sequences, NAME and empirical
+FORMULA; introduced 6 April 2014.
+\url{https://oeis.org/A240514}; \url{https://oeis.org/A240515}.
+\bibitem{auxiliary} M. Somos, \emph{A092886}; P. D. Hanna,
+\emph{A201837} and \emph{A201838}; N. J. A. Sloane and contributors,
+\emph{A006131}, The On-Line Encyclopedia of Integer Sequences.
+\url{https://oeis.org/A092886}; \url{https://oeis.org/A201837};
+\url{https://oeis.org/A201838}; \url{https://oeis.org/A006131}.
+\bibitem{chen} Ricky X. F. Chen and Louis W. Shapiro,
+\emph{On Sequences $G_n$ Satisfying $G_n=(d+2)G_{n-1}-G_{n-2}$},
+Journal of Integer Sequences \textbf{10} (2007), Article 07.8.1,
+Theorem 16, p.~8. Published 2 August 2007.
+\url{https://cs.uwaterloo.ca/journals/JIS/VOL10/Chen/chen509.pdf}.
+\bibitem{bala} Peter Bala,
+\emph{Linear Divisibility Sequences and Chebyshev Polynomials},
+March 2014, Eqs.~(5)--(6), (19)--(22).
+\url{https://oeis.org/A100047/a100047.pdf}.
+\bibitem{mathar} Richard J. Mathar,
+\emph{Bivariate Generating Functions Enumerating Non-Bonding Dominoes
+on Rectangular Boards}, arXiv:2404.18806v1 (2024), p.~8, Eq.~(12).
+\url{https://arxiv.org/abs/2404.18806v1}.
+\bibitem{lean} \emph{HardinA240513Ladder.lean}, revision
+\texttt{70badecc7fca07aa0b70e1202720702f7d1f9670}.
+\href{https://github.com/the-omega-institute/trureturing/blob/70badecc7fca07aa0b70e1202720702f7d1f9670/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA240513Ladder.lean}{Pinned Lean source: HardinA240513Ladder.lean}.
+\end{thebibliography}
+
+\noindent\small Copyright 2026 Haobo Ma and Wenlin Zhang.
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+\end{document}

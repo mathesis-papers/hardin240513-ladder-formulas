@@ -1,0 +1,24 @@
+{
+  "id": "hardin240513-ladder-formulas",
+  "revision": 3,
+  "problem_ids": [
+    "hardin240513",
+    "hardin240514"
+  ],
+  "topic": "The three empirical formulas in OEIS A240513, revision 11, FORMULA entries 1–3",
+  "title": "OEIS A240513, revision 11, FORMULA 1–3: ladder proofs and extensions of Bala (2014)",
+  "creators": [
+    {
+      "name": "Ma, Haobo",
+      "affiliation": "ChronoAI Pte Ltd, Singapore"
+    },
+    {
+      "name": "Zhang, Wenlin",
+      "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"
+    }
+  ],
+  "abstract": "We prove the three empirical formulas in OEIS A240513, revision 11, FORMULA entries 1–3, and extend Bala’s (2014) Chebyshev treatment of the related norm sequence by making the ladder connection explicit. These formulas are Hardin’s order-five recurrence, Barker’s generating function, and Mathar’s relation to A105309. The objects are binary two-column arrays in which no cell has exactly two equal-valued orthogonal neighbors, with the first cell fixed to zero. A transfer on sixteen ordered pairs of rows gives the recurrence and generating function. A norm identity proves the relation to A105309. The same construction proves the empirical width-three and width-four recurrences in A240514–A240515 and A240519; their minimal orders are 20 and 48. At every fixed width the generating function is rational. We also give correctly indexed Chebyshev identities and correct the sign and shift in A105309’s Chebyshev-transform formula.",
+  "summary": "Proofs of all three empirical ladder formulas, exact minimal orders 20 and 48 for widths three and four, and corrections and consequences for the quaternion-norm identities.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/70badecc7fca07aa0b70e1202720702f7d1f9670/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA240513Ladder.lean"
+}

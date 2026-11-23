@@ -1,0 +1,56 @@
+{
+  "posing_source": {
+    "url": "https://oeis.org/A240513",
+    "revision": 11,
+    "locator": "NAME, OFFSET, FORMULA entries 1–3",
+    "status_word": "Empirical"
+  },
+  "verification": {
+    "lean_declaration": "D5.S3.Combinatorics.TraceAvoidingArrays.HardinA240513Ladder.result",
+    "lean_source_scope": "Literal normalized board count; order-five recurrence for n >= 6; formal power-series identity over the integers.",
+    "written_proofs": [
+      "Transfer counting identity and recurrence",
+      "A240513(n) = 1 + A105309(n), n >= 1",
+      "Inhomogeneous order-four recurrence, n >= 5",
+      "A240519 width-one Fibonacci and width-two formulas; transposition symmetry",
+      "A240519 rational generating function at each fixed width via a 4^w-state transfer",
+      "Corrected Chebyshev identities and transform",
+      "A092886 difference, A201837/A201838 sum of squares, closed form and two-sided reflection",
+      "Shifted norm divisibility and its ladder consequence"
+    ],
+    "finite_reductions": "The width-three and width-four all-height recurrences and minimality follow from the written transfer/Hankel arguments and exhaustive checks of the 64-state degree-20 and 256-state degree-48 annihilators, their first boundary indices, and nonzero Hankel determinants modulo 1000000007 (306890401 and 347540197). These are separate from the pinned Lean scope.",
+    "finite_checks": "All sixteen ladder coordinates; literal boards through height 8; 32 published ladder terms; recurrence, generating-function coefficients and quaternion norms through height 210; width-one arrays through length 14; general-width transfer compared with literal counts for all heights and widths 1–4; corrected norm identities through index 210; wider recurrences through height 210. Optional OEIS b-file comparisons cover all 210 terms of each of A240513, A240514 and A240515."
+  },
+  "sibling_coverage": [
+    {
+      "source": "A240519, revision 6, FORMULA k=1,2,3,4",
+      "status": "Proved",
+      "scope": "Fibonacci width one and the empirical recurrences at widths two through four; minimality 20 and 48 is an additional, not-posed conclusion."
+    },
+    {
+      "source": "A240514 and A240515, FORMULA",
+      "status": "Proved",
+      "scope": "Listed recurrences for n >= 21 and n >= 49."
+    },
+    {
+      "source": "A105309, Bala FORMULA block, 27 March 2014",
+      "status": "Refuted-and-corrected",
+      "scope": "Replace T_n by T_(n+1), matrix T_n by T_(n+1), U_(n-1) by U_n; the corrected transform input is t/(1-t-4t^2) and its output is xC(x)."
+    },
+    {
+      "source": "Bala (2014), equations (5)–(6), (19)–(22)",
+      "status": "Reproved; prior proof cited",
+      "scope": "Shifted fourth-order divisibility family and its Chebyshev representation."
+    },
+    {
+      "source": "Chen–Shapiro (2007), Theorem 16; Mathar (2024), equation (12)",
+      "status": "Prior proof cited",
+      "scope": "Related shifted norm-sequence enumerations, not the binary-ladder identification."
+    },
+    {
+      "source": "A105309, A092886 difference, Hanna sum of squares, Suteu closed form and Somos reflection",
+      "status": "Proved",
+      "scope": "Complete written arguments in the note."
+    }
+  ]
+}

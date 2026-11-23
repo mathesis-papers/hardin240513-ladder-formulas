@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 101263,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "27e75d45ba67ff6b21ba597a797becc00357accf5b318cb16fd75175584e1a02",
+      "sha256": "27e75d45ba67ff6b21ba597a797becc00357accf5b318cb16fd75175584e1a02"
+    },
+    "source": {
+      "bytes": 21343,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "8cea8e8240fed37fc7ffe65b6654dcfb5dda84284dadce68d242a3e75ed9d0e1",
+      "sha256": "8cea8e8240fed37fc7ffe65b6654dcfb5dda84284dadce68d242a3e75ed9d0e1"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "We prove the three empirical formulas in OEIS A240513, revision 11, FORMULA entries 1–3, and extend Bala’s (2014) Chebyshev treatment of the related norm sequence by making the ladder connection explicit. These formulas are Hardin’s order-five recurrence, Barker’s generating function, and Mathar’s relation to A105309. The objects are binary two-column arrays in which no cell has exactly two equal-valued orthogonal neighbors, with the first cell fixed to zero. A transfer on sixteen ordered pairs of rows gives the recurrence and generating function. A norm identity proves the relation to A105309. The same construction proves the empirical width-three and width-four recurrences in A240514–A240515 and A240519; their minimal orders are 20 and 48. At every fixed width the generating function is rational. We also give correctly indexed Chebyshev identities and correct the sign and shift in A105309’s Chebyshev-transform formula.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": null,
+    "current_version": 3,
+    "doi": null,
+    "lean_source": {
+      "revision": "70badecc7fca07aa0b70e1202720702f7d1f9670",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/70badecc7fca07aa0b70e1202720702f7d1f9670/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA240513Ladder.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 101263,
+      "sha256": "27e75d45ba67ff6b21ba597a797becc00357accf5b318cb16fd75175584e1a02",
+      "url": "/api/v1/collected-papers/hardin240513-ladder-formulas/files/pdf?version=3"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-23T02:43:48.664254169Z",
+    "record": "hardin240513-ladder-formulas",
+    "repository_name": "hardin240513-ladder-formulas",
+    "source": {
+      "bytes": 21343,
+      "sha256": "8cea8e8240fed37fc7ffe65b6654dcfb5dda84284dadce68d242a3e75ed9d0e1",
+      "url": "/api/v1/collected-papers/hardin240513-ladder-formulas/files/source?version=3"
+    },
+    "title": "OEIS A240513, revision 11, FORMULA 1–3: ladder proofs and extensions of Bala (2014)",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-23T02:43:48.664254169Z",
+        "revision": "3",
+        "version": 3
+      }
+    ],
+    "work": "hardin240513-ladder-formulas"
+  }
+}

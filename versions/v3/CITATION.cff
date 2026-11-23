@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, cite it."
+title: "OEIS A240513, revision 11, FORMULA 1–3: ladder proofs and extensions of Bala (2014)"
+authors:
+  - name: "Haobo Ma"
+  - name: "Wenlin Zhang"
+date-released: "2026-11-23"
+version: "3"
+url: "https://mathesis-omega-research.apps.chrono-ai.fun/papers/hardin240513-ladder-formulas?version=3"
+license: "CC-BY-4.0"

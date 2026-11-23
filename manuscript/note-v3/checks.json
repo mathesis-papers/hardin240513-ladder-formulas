@@ -1,0 +1,328 @@
+{
+  "status": "pass",
+  "state_order": [
+    "00/00",
+    "00/01",
+    "00/10",
+    "00/11",
+    "01/00",
+    "01/01",
+    "01/10",
+    "01/11",
+    "10/00",
+    "10/01",
+    "10/10",
+    "10/11",
+    "11/00",
+    "11/01",
+    "11/10",
+    "11/11"
+  ],
+  "continuation_vectors_v0_to_v5": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      3,
+      6,
+      12,
+      26
+    ],
+    [
+      1,
+      1,
+      3,
+      6,
+      12,
+      26
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      1,
+      3,
+      6,
+      12
+    ],
+    [
+      1,
+      1,
+      2,
+      5,
+      9,
+      20
+    ],
+    [
+      1,
+      2,
+      5,
+      9,
+      20,
+      41
+    ],
+    [
+      0,
+      1,
+      1,
+      3,
+      6,
+      12
+    ],
+    [
+      0,
+      1,
+      1,
+      3,
+      6,
+      12
+    ],
+    [
+      1,
+      2,
+      5,
+      9,
+      20,
+      41
+    ],
+    [
+      1,
+      1,
+      2,
+      5,
+      9,
+      20
+    ],
+    [
+      0,
+      1,
+      1,
+      3,
+      6,
+      12
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      3,
+      6,
+      12,
+      26
+    ],
+    [
+      1,
+      1,
+      3,
+      6,
+      12,
+      26
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "finite_certificate_states": 16,
+  "literal_board_comparison_heights": [
+    1,
+    8
+  ],
+  "literal_counts_including_zero_convention": [
+    0,
+    2,
+    3,
+    6,
+    10,
+    21,
+    42,
+    86,
+    179
+  ],
+  "recurrence_comparison_heights": [
+    6,
+    210
+  ],
+  "generating_function_coefficient_degrees": [
+    0,
+    210
+  ],
+  "quaternion_identity_comparison_heights": [
+    1,
+    210
+  ],
+  "width_one_comparison_heights": [
+    1,
+    14
+  ],
+  "general_width_literal_comparison": "All rectangles with 1 <= height,width <= 4",
+  "rectangle_counts_heights_1_to_4_widths_1_to_4": [
+    [
+      1,
+      2,
+      3,
+      5
+    ],
+    [
+      2,
+      3,
+      6,
+      10
+    ],
+    [
+      3,
+      6,
+      10,
+      28
+    ],
+    [
+      5,
+      10,
+      28,
+      99
+    ]
+  ],
+  "published_prefix_terms": 32,
+  "external_bfile_matching_terms": null,
+  "wider_recurrence_checks": [
+    {
+      "width": 3,
+      "states": 64,
+      "annihilator_degree": 20,
+      "annihilator_nonzero_coordinates": 0,
+      "recurrence_comparison_heights": [
+        21,
+        210
+      ],
+      "hankel_size": 20,
+      "hankel_modulus": 1000000007,
+      "hankel_determinant_mod_prime": 306890401,
+      "published_prefix_terms": 10,
+      "external_bfile_matching_terms": null
+    },
+    {
+      "width": 4,
+      "states": 256,
+      "annihilator_degree": 48,
+      "annihilator_nonzero_coordinates": 0,
+      "recurrence_comparison_heights": [
+        49,
+        210
+      ],
+      "hankel_size": 48,
+      "hankel_modulus": 1000000007,
+      "hankel_determinant_mod_prime": 347540197,
+      "published_prefix_terms": 10,
+      "external_bfile_matching_terms": null
+    }
+  ],
+  "norm_sibling_checks": {
+    "chebyshev_first_kind_and_matrix_indices": [
+      0,
+      210
+    ],
+    "chebyshev_second_kind_indices": [
+      0,
+      210
+    ],
+    "a092886_difference_indices": [
+      1,
+      210
+    ],
+    "a201837_a201838_sum_of_squares_indices": [
+      0,
+      210
+    ],
+    "two_sided_reflection_nonnegative_indices": [
+      0,
+      210
+    ],
+    "shifted_divisibility_pairs": 845,
+    "shifted_divisibility_first_index_range": [
+      1,
+      32
+    ],
+    "corrected_chebyshev_transform_degrees": [
+      0,
+      211
+    ],
+    "source_formula_counterexamples": {
+      "printed_T_n_at_n2": {
+        "printed_value": 1,
+        "c2": 2
+      },
+      "printed_matrix_T_n_at_n2": {
+        "printed_value": 1,
+        "c2": 2
+      },
+      "printed_U_n_minus_1_at_n2": {
+        "printed_value": 1,
+        "c2": 2
+      },
+      "printed_transform_constant": {
+        "printed_value": 0,
+        "c0": 1
+      }
+    }
+  },
+  "counts_1_to_32": [
+    2,
+    3,
+    6,
+    10,
+    21,
+    42,
+    86,
+    179,
+    370,
+    770,
+    1601,
+    3330,
+    6930,
+    14419,
+    30006,
+    62442,
+    129941,
+    270410,
+    562726,
+    1171043,
+    2436962,
+    5071362,
+    10553601,
+    21962242,
+    45703842,
+    95110563,
+    197926886,
+    411889610,
+    857150101,
+    1783745642,
+    3712008566,
+    7724760339
+  ],
+  "coverage": "Exact finite integer computations; all-height conclusions are proved in note.tex."
+}
