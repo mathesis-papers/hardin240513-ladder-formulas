@@ -31,6 +31,7 @@
     "concept_doi": "10.5281/zenodo.24409471",
     "current_version": 3,
     "doi": "10.5281/zenodo.24409472",
+    "kind": "note",
     "lean_source": {
       "revision": "70badecc7fca07aa0b70e1202720702f7d1f9670",
       "url": "https://github.com/the-omega-institute/trureturing/blob/70badecc7fca07aa0b70e1202720702f7d1f9670/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA240513Ladder.lean"
@@ -55,10 +56,12 @@
     "title": "OEIS A240513, revision 11, FORMULA 1–3: ladder proofs and extensions of Bala (2014)",
     "versions": [
       {
+        "changelog": null,
         "previous_version": null,
         "published_on": "2026-11-23T02:43:48.664254169Z",
         "revision": "3",
-        "version": 3
+        "version": 3,
+        "version_label": null
       }
     ],
     "work": "hardin240513-ladder-formulas"
